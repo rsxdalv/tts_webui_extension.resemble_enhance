@@ -11,7 +11,7 @@ setuptools.setup(
     project_urls={},
     scripts=[],
     install_requires=[
-        "resembly-enhance @ git+https://github.com/resemble-ai/resemble-enhance@d20c3728f39eb9ec1f2950d9742942acc4ac6cb8",
+        "resemble-enhance @ git+https://github.com/resemble-ai/resemble-enhance@d20c3728f39eb9ec1f2950d9742942acc4ac6cb8",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
