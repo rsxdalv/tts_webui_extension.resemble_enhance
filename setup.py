@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
     name="extension_resemble_enhance",
     packages=setuptools.find_namespace_packages(),
-    version="0.0.1",
+    version="0.1.0",
     author="rsxdalv",
     description="Resemble Enhance Extension",
     license="MIT",
@@ -11,7 +11,8 @@ setuptools.setup(
     project_urls={},
     scripts=[],
     install_requires=[
-        "resemble-enhance @ git+https://github.com/resemble-ai/resemble-enhance@d20c3728f39eb9ec1f2950d9742942acc4ac6cb8",
+        "resemble-enhance @ git+https://github.com/rsxdalv/resemble-enhance@main",
+        "numpy < 2",  # gradio breaking
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

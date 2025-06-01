@@ -9,7 +9,6 @@ def extension__tts_generation_webui():
     return {
         "package_name": "extension_resemble_enhance",
         "name": "Resemble Enhance",
-        "version": "0.0.1",
         "requirements": "git+https://github.com/rsxdalv/extension_resemble_enhance@main",
         "description": "Resemble Enhance allows enhancing audio files.",
         "extension_type": "interface",
@@ -31,7 +30,7 @@ def _denoise_enhance(path, solver, nfe, tau, denoising):
         device = "cuda"
     else:
         device = "cpu"
-    from resemble_enhance.enhancer.inference import denoise, enhance
+    from resemble_enhance.enhancer.inference import denoise, enhance, download
 
     if path is None:
         return None, None
@@ -43,9 +42,10 @@ def _denoise_enhance(path, solver, nfe, tau, denoising):
     dwav, sr = torchaudio.load(path)
     dwav = dwav.mean(dim=0)
 
-    wav1, new_sr = denoise(dwav, sr, device, run_dir=RUN_DIR)
+    download(RUN_DIR, safetensors=True)
+    wav1, new_sr = denoise(dwav, sr, device, run_dir=RUN_DIR / "denoiser")
     wav2, new_sr = enhance(
-        dwav, sr, device, nfe=nfe, solver=solver, lambd=lambd, tau=tau, run_dir=RUN_DIR
+        dwav, sr, device, nfe=nfe, solver=solver, lambd=lambd, tau=tau, run_dir=RUN_DIR / "enhancer", skip_download=True,
     )
 
     wav1 = wav1.cpu().numpy()
@@ -103,3 +103,4 @@ if __name__ == "__main__":
         resemble_enhance_ui()
 
     demo.launch()
+    # python -m workspace.extension_resemble_enhance.extension_resemble_enhance.main
