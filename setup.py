@@ -1,13 +1,13 @@
 import setuptools
 
 setuptools.setup(
-    name="extension_resemble_enhance",
+    name="tts_webui_extension.resemble_enhance",
     packages=setuptools.find_namespace_packages(),
     version="0.1.0",
     author="rsxdalv",
     description="Resemble Enhance Extension",
     license="MIT",
-    url="https://github.com/rsxdalv/extension_audio_separator",
+    url="https://github.com/rsxdalv/tts_webui_extension.audio_separator",
     project_urls={},
     scripts=[],
     install_requires=[
@@ -20,3 +20,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
 )
+
